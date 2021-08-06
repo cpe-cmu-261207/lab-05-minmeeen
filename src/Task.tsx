@@ -23,8 +23,7 @@ const Task = ({ id, name, doneFn, deleteFn }: TaskProps) => {
             }}>
 
             <span className="text-2xl"> {name} </span>
-            <div className="flex space-x-1 items-center"
-            >
+            <div className="flex space-x-1 items-center">
                 <button className="bg-green-400 w-24 text-2xl" style={style}
                     onClick={() => doneFn(id)} >Done</button>
                 <button className="bg-red-400 w-24 text-2xl" style={style}

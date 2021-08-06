@@ -21,6 +21,7 @@ const Todo = () => {
     const onKeyDownCallback = (ev: React.KeyboardEvent<HTMLInputElement>) => {
         if (ev.key === 'Enter') {
             addTask(input)
+            
         }
     }
 
@@ -37,14 +38,21 @@ const Todo = () => {
             const newTasks = [...tasks, { id: newId, name: input }]
 
             setTasks(newTasks)
+            setInput("");
+
 
         }
+    }
+
+    const showTasks = (s:[]) => {
+
     }
 
     const doneTask = (id: number) => {
         const newDoneTask = tasks.filter(x => x.id === id)
         deleteTask(id);
         const newDoneTasks = [...donetasks, {id:newDoneTask[0].id , name: newDoneTask[0].name}]
+        console.log(newDoneTask[0]);
         setDoneTasks(newDoneTasks);
     }
 
@@ -60,6 +68,7 @@ const Todo = () => {
 
             <div className='flex space-x-1'>
                 <input className='border border-gray-400 w-full text-2xl'
+                    value = {input}
                     onKeyDown={onKeyDownCallback}
                     onChange={onChangeCallback}
                 ></input>
@@ -70,12 +79,13 @@ const Todo = () => {
             </div>
 
             {/* task zone */}
-            <div>
-                {tasks.map(x => <Task id={x.id} name={x.name} doneFn={doneTask} deleteFn={deleteTask} />)}
+            <div className ="todoLists">
+                {tasks.map(x => <Task id={x.id} name={x.name} doneFn={doneTask} deleteFn={deleteTask} />).reverse()}
+                
             </div>
 
-            <div>
-                {donetasks.map(x => <DoneTask id={x.id} name={x.name} />)}
+            <div className = "doneLists">
+                {donetasks.map(x => <DoneTask id={x.id} name={x.name} />).reverse()}
             </div>
 
 

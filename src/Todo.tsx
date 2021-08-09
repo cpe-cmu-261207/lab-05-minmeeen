@@ -44,9 +44,6 @@ const Todo = () => {
         }
     }
 
-    const showTasks = (s:[]) => {
-
-    }
 
     const doneTask = (id: number) => {
         const newDoneTask = tasks.filter(x => x.id === id)
